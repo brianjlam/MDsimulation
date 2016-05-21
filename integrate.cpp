@@ -21,9 +21,8 @@ long double integrate(System &sys)
 		sys.x[i] = xx;
 		sys.y[i] = yy;
 	}
-	sys.temp = sumv2/(2*sys.N);
+	sys.temp = 0.5*sumv2/sys.N;
 	// Sum P.E. and K.E.
-	long double etot = (sys.en + 0.5*sumv2)/sys.N;
+	long double etot = (sys.pe + 0.5*sumv2)/sys.N;
 	return etot;
 }
-

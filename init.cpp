@@ -14,8 +14,8 @@ void init(System &sys)
 	{
 		sys.x[i] = sys.space*(i % sys.size + 1);
 		sys.y[i] = sys.space*(i/3 + 1);
-		vx[i] = std::rand() % 1000 / 1000.0 - 0.5;
-		vy[i] = std::rand() % 1000 / 1000 - 0.5;
+		vx[i] = (std::rand() % 10000)/ 10000 - 0.5;
+		vy[i] = (std::rand() % 10000)/ 10000 - 0.5;
 		sumvx += vx[i];
 		sumvy += vy[i];
 		sumv2 += vx[i]*vx[i] + vy[i]*vy[i];
@@ -24,6 +24,7 @@ void init(System &sys)
 	sumvy /= sys.N;
 	sumv2 /= sys.N;
 	double fs = std::sqrt(2*sys.temp/sumv2);
+	std::cout << fs;
 	for (int i = 0; i < sys.N; i++)
 	{
 		vx[i] = (vx[i] - sumvx)*fs;

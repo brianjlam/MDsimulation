@@ -2,21 +2,23 @@
 #include <iostream>
 #include <fstream>
 #include "myMD.h"
+using std::cout;
+using std::cin
 
 void System::makeSystem()
 {
 	// prompt simulation parameters
-	std::cout << "How long to simulate? ";
-	std::cin >> t_max;
-	std::cout << "Size of timestep? ";
-	std::cin >> delt;
-	std::cout << "Number of particles? Give sqrt(N) ";
-	std::cin >> size;
+	cout << "How long to simulate? ";
+	cin >> t_max;
+	cout << "Size of timestep? ";
+	cin >> delt;
+	cout << "Number of particles? Give sqrt(N) ";
+	cin >> size;
+	cout << "Lattice Spacing? ";
+	cin >> space;
+	cout << "Initial temperature? ";
+	cin >> temp;
 	N = size*size;
-	std::cout << "Lattice Spacing? ";
-	std::cin >> space;
-	std::cout << "Initial temperature? ";
-	std::cin >> temp;
 	x.resize(N);
 	y.resize(N);
 	xm.resize(N);
@@ -50,8 +52,8 @@ int main()
 		// output results to file
 		outputThermo << t << ", ";
 		outputThermo << sys.temp << ", ";
-		outputThermo << etot - sys.en << ", ";
-		outputThermo << sys.en << ", ";
+		outputThermo << etot - sys.pe << ", ";
+		outputThermo << sys.pe << ", ";
 		outputThermo << etot << "\n";
 	}
 }

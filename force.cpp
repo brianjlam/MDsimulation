@@ -15,7 +15,7 @@ void force(System &sys)
 		sys.fx[i] = 0;
 		sys.fy[i] = 0;
 	}
-	sys.en = 0;
+	sys.pe = 0;
 
 	// calculate force, considering all pairs of atoms
 	for (int i = 0; i < sys.N - 1; i++)
@@ -36,11 +36,15 @@ void force(System &sys)
 				long double r2i = 1.0/r2;
 				long double r6i = pow(r2i, 3);
 				long double ff = 48*r2i*r6i*(r6i - 0.5); // Lennard-Jones force
+				if (ff > 1e10)
+				{
+					ff = 0;
+				}
 				sys.fx[i] += ff*xr;
 				sys.fy[i] += ff*yr;
 				sys.fx[j] -= ff*xr;
 				sys.fy[j] -= ff*yr;
-				sys.en += 4*r6i*(r6i - 1) - ec; // Lennard-Jones potential energy
+				sys.pe += 4*r6i*(r6i - 1) - ec; // Lennard-Jones potential energy
 			}
 		}
 	}
