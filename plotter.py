@@ -17,7 +17,7 @@ def plotThermo(filename):
             U.append(row[4])
             time.append(row[0])
     plt.plot(time, K, time, P, time, U)
-    plt.axis([0,4.99,-800,1100])
+    plt.axis([0,4.99,-600,800])
     plt.xlabel('Time')
     plt.ylabel('Energy')
     plt.title('Energy Plot for MD Simulation')

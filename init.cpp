@@ -29,7 +29,7 @@ void init(System &sys)
 	{
 		vx[i] = (vx[i] - sumvx)*fs;
 		vy[i] = (vy[i] - sumvy)*fs;
-		sys.xm[i] = sys.x[i] - vx[i];
-		sys.ym[i] = sys.y[i] - vy[i];
+		sys.xm[i] = sys.x[i] - vx[i]*sys.delt;
+		sys.ym[i] = sys.y[i] - vy[i]*sys.delt;
 	}
 }

@@ -3,7 +3,7 @@
 #include <fstream>
 #include "myMD.h"
 using std::cout;
-using std::cin
+using std::cin;
 
 void System::makeSystem()
 {
